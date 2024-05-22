@@ -2,7 +2,14 @@
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
 ---
-
+<div class="flag-container">
+	<div class="color-stripe one"></div>
+	<div class="color-stripe two"></div>
+	<div class="color-stripe three"></div>
+	<div class="color-stripe four"></div>
+	<div class="color-stripe five"></div>
+	<div class="color-stripe six"></div>
+</div>
 <header>
 	<nav>
 		<h2><a href="/">{SITE_TITLE}</a></h2>
@@ -81,5 +88,66 @@ import { SITE_TITLE } from '../consts';
 		.social-links {
 			display: none;
 		}
+		}
+	/* changing Flag header */
+.flag-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 50px;
+  margin: 0;
+}
+.color-stripe {
+  flex: 1;
+  height: 100%;
+}
+.one, .two, .three, .four, .five, .six {
+animation-duration: 10s;
+animation-direction: alternate;
+animation-iteration-count: infinite;
+animation-fill-mode: both;
+}
+.one {animation-name: stripeone;}
+.two {animation-name: stripetwo;}
+.three {animation-name: stripethree;}
+.four {animation-name: stripefour;}
+.five {animation-name: stripefive;}
+.six {animation-name: stripesix;}
+
+@keyframes stripeone {
+0%   {background-color: #FF0018;}
+50%  {background-color: #55cdfd;}
+75% {background-color: #fe76a2;}
+100% {background-color: #d62800;}
+}
+@keyframes stripetwo {
+0%   {background-color: #FFA52C;}
+50%  {background-color: #f6aab7;}
+75% {background-color: #ffffff;}
+100% {background-color: #ff9b56;}
+}
+@keyframes stripethree {
+0%   {background-color: #FFFF41;}
+50%  {background-color: #ffffff;}
+75% {background-color: #bf12d7;}
+100% {background-color: #ffffff;}
+}
+@keyframes stripefour {
+0%   {background-color: #028121;}
+50%  {background-color: #f6aab7;}
+75% {background-color: #000000;}
+100% {background-color: #d462a6;}
+}
+@keyframes stripefive {
+0%   {background-color: #0000F9;}
+50%  {background-color: #55cdfd;}
+75% {background-color: #303cbe;}
+100% {background-color: #a40062;}
+}
+@keyframes stripesix {
+0%   {background-color: #86007D;}
+50%  {background-color: #ffffff;}
+75% {background-color: #ffffff;}
+100% {background-color: #ffffff;}
 	}
 </style>
