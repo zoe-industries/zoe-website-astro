@@ -1,5 +1,10 @@
 ## 🚀 Project Structure
 
+
+Put new posts into /src/content/blog/
+
+
+
 Inside of this Astro project, are the following folders and files:
 
 ```text
