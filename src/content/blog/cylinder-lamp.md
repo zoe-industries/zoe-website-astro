@@ -1,7 +1,7 @@
 ---
 title: 'Cylinder Lamp'
 description: 'a lamp i built years ago'
-pubDate: 'May 2024'
+pubDate: '2014'
 heroImage: '/cylinder-lamp.jpg'
 ---
 

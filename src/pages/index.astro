@@ -1,8 +1,14 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { getCollection } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
+
+const posts = (await getCollection("blog")).sort(
+	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
+);
 ---
 
 <!doctype html>
@@ -15,35 +21,54 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<main>
 			<h1>welcome to my website✨</h1>
 			<p>
-				i had a small html and css only website before, if you still want to vist it, 
-				you can find it here: <a href="https://smol.zoe.sx">smol.zoe.sx</a><br>
-				It was a fun project, but now i wanted to try out astro and see if its more convinient.
+				i had a small html and css only website before, if you still
+				want to vist it, you can find it here: <a
+					href="https://smol.zoe.sx">smol.zoe.sx</a
+				><br />
+				It was a fun project, but now i wanted to try out astro and see if
+				its more convinient.
 			</p>
 			<h2>about me</h2>
 			<h3>Hai 👋, i'm Zoe Marie</h3>
 			<p>
-            	I'm a (hardware) and software engineer based in Germany.<br>
-            	My main focus revolves around interaction of humans and machines and the problems that arise.<br>
-            	I am also interested in event engineering especially the interaction between humans and technology.<br>
-				<br>
-            	I currently work for a company that maintaines Wind Turbines.<br>
-            	There my main job is getting senile SCADA systems introduced to nowadays ideas of security.<br>
+				I'm a (hardware) and software engineer based in Germany.<br />
+				My main focus revolves around interaction of humans and machines
+				and the problems that arise.<br />
+				I am also interested in event engineering especially the interaction
+				between humans and technology.<br />
+				<br />
+				I currently work for a company that maintaines Wind Turbines.<br
+				/>
+				There my main job is getting senile SCADA systems introduced to nowadays
+				ideas of security.<br />
 			</p>
 			<h2>projects</h2>
 			<p>
-				Nothing done here yet, once i have time i will (finish to) write up some Projects.<br>
-            	I might also never get around to it, who knows. ¯\_(ツ)_/¯<br>
-            <br>
-            <p style="font-style: italic;">For now you can check out my (again work in progress) posts here:</p>
-			<ul>
-				<li><a href="projects/fomp/fomp.html">FOMP pneumatic tube system</a></li>
-				<li><a href="projects/fomp/fomp-autorouter-v1.html">FOMP Autorouter V1</a></li>
-				<li><a href="projects/cylinder-lamp/index.html">Cylinder Lamp</a></li>
-				<li><a href="projects/web-of-tubes/index.html">Web of Tubes</a></li>
-			</ul>
+				Nothing done here yet, once i have time i will (finish to) write
+				up some Projects.<br />
+				I might also never get around to it, who knows. ¯\_(ツ)_/¯<br />
+				<br />
+				<p style="font-style: italic;">
+					For now you can check out my (again work in progress) posts
+					here:
+				</p>
+				<ul>
+					{
+						posts.map((post) => (
+							<li>
+								<a class="post" href={`/p/${post.slug}/`}>
+									<p class="title">
+										{post.data.title} -{" "}
+										{post.data.description}
+									</p>
+								</a>
+							</li>
+						))
+					}
+				</ul>
 			</p>
 			<h2>contact me!</h2>
-            <p>you can contact me via email: hai [at] zoe.sx</p>
+			<p>you can contact me via email: hai [at] zoe.sx</p>
 		</main>
 		<Footer />
 	</body>

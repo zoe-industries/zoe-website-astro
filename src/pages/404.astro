@@ -1,0 +1,43 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <section id="404">
+        <header>
+            <h1>404</h1>
+        </header>
+        <p>
+            i could not find what you where looking for, sorry!<br />
+            maybe you can find it <a href="/">here</a>?<br />
+            Otherwise this raccoon will keep you company.</br>
+            Its also very good at keeping track of its stuff.
+        </p>
+    <img src="/404-raccoon.gif" alt="404" />
+</section>
+<Footer />
+<style>
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 100vh;
+        background-color: black;
+        color: white;
+    }
+    h1 {
+        font-size: 10em;
+        margin: 0;
+        color: white;
+    }
+</style>
+</html>
+
